@@ -25,21 +25,23 @@ export function Input(){
                 Submit
              </button>
 
-             <ul className="list">
+             <ul className="list" onClick={
+                  (e)=>{
+                 
+                 var parent= e.target.parentNode;
+                 newarr= arr.filter((element, index) => {
+
+                       return index != parent.id;
+                 })
+                 console.log(newarr);
+                 setarr(newarr);
+             }}>
                 
                 { arr.map((element) => <li id= {index} key={index++}>
 
                      <h2>{element}</h2>
-                     <button onClick={(e)=>{
-
-                         console.log(e.target.parentNode.getAttribute("id"));
-                          var newarr=arr;
-                         
-                          newarr.splice(e.target.parentNode.getAttribute("id"), 1);
-                          console.log(newarr);
-                          setarr(newarr);
-
-                     }}> Delete</button>
+                     <button 
+             > Delete</button>
                 </li>)}
 
              </ul>
